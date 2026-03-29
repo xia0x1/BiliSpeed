@@ -143,6 +143,8 @@ BiliSpeed/
 
 本项目 100% 由 AI 生成，0 手写代码（甚至是你现在看到的README）。
 
+原先还计划加入“直播自动原画”功能，结果 AI 捣鼓了两天也没搞定，技术难度太大，含泪放弃… 
+
 如果发现什么问题，或者有什么脑洞大开的建议，欢迎在github中提 [Issue]<https://github.com/xia0x1/BiliSpeed/issues>
 
 我会原封不动转告给 AI，让它自己去改代码（doge）。
