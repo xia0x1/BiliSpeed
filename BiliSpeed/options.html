@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiliSpeed 设置</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    h1 {
+      color: #00a1d6;
+      font-size: 28px;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 16px;
+      margin-top: 5px;
+    }
+    .section {
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .section h2 {
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section h2::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 20px;
+      background: #00a1d6;
+      border-radius: 2px;
+    }
+    .switch-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .switch-container:last-child {
+      border-bottom: none;
+    }
+    .switch-label {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .switch-desc {
+      font-size: 14px;
+      color: #666;
+      margin-top: 4px;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 52px;
+      height: 28px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .3s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #00a1d6;
+    }
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+    .speed-control {
+      margin-top: 15px;
+    }
+    .speed-input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .speed-input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    .speed-input:focus {
+      outline: none;
+      border-color: #00a1d6;
+      box-shadow: 0 0 0 2px rgba(0,161,214,0.2);
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: #00a1d6;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #0087b3;
+    }
+    .btn-danger {
+      background: #f56c6c;
+      color: white;
+    }
+    .btn-danger:hover {
+      background: #e64c4c;
+    }
+    .speed-list {
+      margin-top: 20px;
+    }
+    .speed-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .speed-item:last-child {
+      margin-bottom: 0;
+    }
+    .speed-value {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #999;
+      font-size: 16px;
+    }
+    .status-message {
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-top: 20px;
+      display: none;
+    }
+    .status-success {
+      background: #f0f9eb;
+      color: #67c23a;
+      border: 1px solid #e1f3d8;
+      display: block;
+    }
+    .status-error {
+      background: #fef0f0;
+      color: #f56c6c;
+      border: 1px solid #fde2e2;
+      display: block;
+    }
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #999;
+      font-size: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    .hint {
+      font-size: 14px;
+      color: #999;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BiliSpeed</h1>
+    <p class="subtitle">B站倍速增强工具 - 自定义倍速、键盘快捷键增强</p>
+  </header>
+
+  <main>
+
+    <section class="section">
+      <h2>倍速设置</h2>
+      <div class="speed-control">
+        <h3 style="font-size: 18px; margin-bottom: 15px; color: #555;">自定义倍速</h3>
+        <div class="hint">添加自定义倍速值（0.1 - 10.0，步进 0.1），将在B站原生倍速菜单中显示</div>
+
+        <div class="speed-input-group">
+          <input type="number" id="speedInput" class="speed-input"
+                 min="0.1" max="10" step="0.1" placeholder="例如: 3.0" value="3.0">
+          <button id="addSpeedBtn" class="btn btn-primary">添加</button>
+        </div>
+
+        <div class="speed-list" id="speedList">
+          <!-- 倍速列表将通过JS动态生成 -->
+          <div class="empty-state">暂无自定义倍速</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>键盘快捷键设置</h2>
+
+      <div class="switch-container">
+        <div>
+          <div class="switch-label">长按方向键→倍速</div>
+          <div class="switch-desc">长按右箭头键时视频倍速（默认3.0x）</div>
+        </div>
+        <div class="speed-input-group" style="margin-top: 8px; margin-bottom: 0;">
+          <input type="number" id="arrowRightSpeed" class="speed-input"
+                 min="0.1" max="10" step="0.1" placeholder="3.0" value="3.0" style="width: 120px;">
+          <span style="margin-left: 8px; color: #666;">倍</span>
+        </div>
+      </div>
+
+      <div class="switch-container">
+        <div>
+          <div class="switch-label">启用 A 键切换倍速（与长按倍速一致）</div>
+          <div class="switch-desc">按 A 键在自定义倍速和当前倍速之间切换</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="enableAKeyToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="switch-container" id="separateAToggleContainer" style="display: none;">
+        <div>
+          <div class="switch-label">将 A 键切换倍速与长按倍速分开设置</div>
+          <div class="switch-desc">A键使用独立倍速值，长按方向键→使用上方设置</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="separateAToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="speed-input-group" id="separateASpeedContainer" style="display: none; margin-top: 15px;">
+        <div style="flex: 1;">
+          <div class="switch-label" style="font-size: 16px; margin-bottom: 8px;">A 键切换倍速</div>
+          <div class="switch-desc" style="font-size: 14px; color: #666;">按A键时切换到的倍速值</div>
+        </div>
+        <input type="number" id="separateASpeed" class="speed-input"
+               min="0.1" max="10" step="0.1" placeholder="3.0" value="3.0" style="width: 120px;">
+        <span style="margin-left: 8px; color: #666;">倍</span>
+      </div>
+    </section>
+
+    <div id="statusMessage" class="status-message"></div>
+  </main>
+
+  <footer>
+    <p>BiliSpeed v1.0 | 支持 Chrome 和 Edge 浏览器</p>
+    <p>所有设置将保存在浏览器的本地存储中</p>
+  </footer>
+
+  <script src="options.js"></script>
+</body>
+</html>
