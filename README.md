@@ -23,31 +23,6 @@
 - 使用Chrome存储同步设置
 - 实时设置生效，无需刷新页面
 
-## 文件结构
-
-```
-BiliSpeed/
-├── manifest.json              # 扩展清单文件 (Manifest V3)
-├── options.html              # 设置页面
-├── options.js                # 设置页面逻辑
-├── background.js             # 后台脚本（存储管理和图标点击事件）
-├── content-video.js          # 视频页面增强脚本（主要功能实现）
-├── content-live.js           # 直播页面脚本（保留文件，功能已移除）
-├── icons/
-│   ├── icon16.png            # 扩展图标 16x16
-│   ├── icon48.png            # 扩展图标 48x48
-│   └── icon128.png           # 扩展图标 128x128
-└── README.md                 # 说明文档
-```
-
-### 文件说明
-
-1. **manifest.json** - 扩展配置文件，定义名称、版本、权限、内容脚本等
-2. **options.html/options.js** - 设置页面，提供自定义倍速和键盘快捷键配置界面
-3. **background.js** - 后台脚本，管理设置存储和处理工具栏图标点击事件
-4. **content-video.js** - 核心功能脚本，在B站视频页面注入，实现倍速自定义和键盘快捷键功能
-5. **content-live.js** - 直播页面脚本（保留文件，当前版本无直播增强功能）
-6. **icons/** - 扩展图标文件夹，包含16x16、48x48、128x128三种尺寸的图标
 
 ## 安装和使用
 
@@ -138,6 +113,33 @@ BiliSpeed/
 2. 自定义倍速值与原生倍速重复时不会重复添加
 3. 所有设置保存在浏览器本地，卸载扩展会清除
 
+
+## 文件结构
+
+```
+BiliSpeed/
+├── manifest.json              # 扩展清单文件 (Manifest V3)
+├── options.html              # 设置页面
+├── options.js                # 设置页面逻辑
+├── background.js             # 后台脚本（存储管理和图标点击事件）
+├── content-video.js          # 视频页面增强脚本（主要功能实现）
+├── content-live.js           # 直播页面脚本（保留文件，功能已移除）
+├── icons/
+│   ├── icon16.png            # 扩展图标 16x16
+│   ├── icon48.png            # 扩展图标 48x48
+│   └── icon128.png           # 扩展图标 128x128
+└── README.md                 # 说明文档
+```
+
+### 文件说明
+
+1. **manifest.json** - 扩展配置文件，定义名称、版本、权限、内容脚本等
+2. **options.html/options.js** - 设置页面，提供自定义倍速和键盘快捷键配置界面
+3. **background.js** - 后台脚本，管理设置存储和处理工具栏图标点击事件
+4. **content-video.js** - 核心功能脚本，在B站视频页面注入，实现倍速自定义和键盘快捷键功能
+5. **content-live.js** - 直播页面脚本（保留文件，当前版本无直播增强功能）
+6. **icons/** - 扩展图标文件夹，包含16x16、48x48、128x128三种尺寸的图标
+
 ## 友情提示
 本项目为纯前端浏览器扩展，无需任何构建工具或依赖包。所有代码使用原生JavaScript实现，遵循Chrome扩展开发规范。
 
@@ -145,7 +147,7 @@ BiliSpeed/
 
 原先还计划加入“直播自动原画”功能，结果 AI 捣鼓了两天也没搞定，技术难度太大，含泪放弃… 
 
-如果发现什么问题，或者有什么脑洞大开的建议，欢迎在github中提 [Issue]<https://github.com/xia0x1/BiliSpeed/issues>
+如果发现什么问题，或者有什么脑洞大开的建议，欢迎在github中提 [Issue](https://github.com/xia0x1/BiliSpeed/issues)
 
 我会原封不动转告给 AI，让它自己去改代码（doge）。
 
