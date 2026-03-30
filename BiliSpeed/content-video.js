@@ -24,6 +24,9 @@
   let originalPlaybackRate = 1.0;
   let lastPlaybackRateBeforeToggle = 1.0;
   let aKeyToggleSpeed = 3.0; // 根据设置计算
+  let arrowRightPressTime = 0;
+  let isLongPressTriggered = false;
+  const SEEK_STEP = 5; // 快进步长（秒）
 
   // 初始化
   function init() {
@@ -261,18 +264,21 @@
 
     // 右箭头键处理
     if (event.key === 'ArrowRight' || event.code === 'ArrowRight' || event.keyCode === 39) {
-      // 阻止原生行为（3倍速）
+      // 阻止原生行为，完全由我们处理
       event.preventDefault();
       event.stopPropagation();
 
       if (!arrowRightPressed) {
         arrowRightPressed = true;
+        arrowRightPressTime = Date.now();
+        isLongPressTriggered = false;
         originalPlaybackRate = videoElement.playbackRate;
 
         // 设置长按计时器
         arrowRightTimer = setTimeout(() => {
           if (arrowRightPressed && videoElement) {
-            // 应用自定义倍速
+            // 长按触发，应用自定义倍速
+            isLongPressTriggered = true;
             videoElement.playbackRate = settings.arrowRightSpeed;
             updateSelectedSpeed(videoElement.playbackRate);
           }
@@ -313,17 +319,28 @@
       event.stopPropagation();
 
       if (arrowRightPressed) {
+        const pressDuration = Date.now() - arrowRightPressTime;
         arrowRightPressed = false;
         if (arrowRightTimer) {
           clearTimeout(arrowRightTimer);
           arrowRightTimer = null;
         }
 
-        // 恢复原始倍速
-        if (videoElement) {
+        // 短按且长按未触发：执行快进
+        if (pressDuration < 300 && !isLongPressTriggered && videoElement) {
+          // 快进 SEEK_STEP 秒，但不超过视频总时长
+          videoElement.currentTime = Math.min(videoElement.currentTime + SEEK_STEP, videoElement.duration);
+          // 注意：快进不改变倍速，无需更新选中状态
+        }
+
+        // 长按已触发：恢复原始倍速
+        if (isLongPressTriggered && videoElement) {
           videoElement.playbackRate = originalPlaybackRate;
           updateSelectedSpeed(videoElement.playbackRate);
         }
+
+        // 重置长按触发标志
+        isLongPressTriggered = false;
       }
       return;
     }
