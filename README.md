@@ -2,7 +2,7 @@
 
 一个浏览器扩展，为B站（哔哩哔哩）提供视频倍速自定义功能。
 
-> 当前版本：v1.1.0 | 更新日志见 [CHANGELOG.md](CHANGELOG.md)
+> 当前版本：v1.1.0 | 更新日志见 [CHANGELOG.md](BiliSpeedv1.1/CHANGELOG.md)
 
 ## 功能特性
 
