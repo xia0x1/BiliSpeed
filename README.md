@@ -100,7 +100,7 @@ BiliSpeed/
 
 ## 更新日志
 
-见 [CHANGELOG.md](CHANGELOG.md)
+见 [CHANGELOG.md](BiliSpeedv1.1/CHANGELOG.md)
 
 ## 友情提示
 本项目为纯前端浏览器扩展，无需任何构建工具或依赖包。所有代码使用原生JavaScript实现，遵循Chrome扩展开发规范。
