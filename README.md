@@ -120,6 +120,7 @@ BiliSpeed/
 本项目 100% 由 AI 生成，0 手写代码（甚至是你现在看到的README）。
 
 v1.0时计划加入“直播自动原画”功能，结果 AI 捣鼓了两天也没搞定，技术难度太大，含泪放弃… 
+
 但是v1.2版本依靠zcode与glm5.3成功实现了此功能！感谢智谱搞活动让我白嫖了一亿token，ai发展真的太快了，核弹爆炸震惊瘫坐...
 
 如果发现什么问题，或者有什么脑洞大开的建议，欢迎在github中提 [Issue]<https://github.com/xia0x1/BiliSpeed/issues>
